@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// use App\Http\Controllers\Admin\BlogController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +25,10 @@ Route::get('/', [
 
 
 // Details Page Route
-Route::get('/blog-details/{id}',[
-    'uses' => '\App\Http\Controllers\Front\BlogController@index',
-    'as' => 'blog-details',
-]);
+// Route::get('/blog-details/{id}',[
+//     'uses' => '\App\Http\Controllers\Front\BlogController@index',
+//     'as' => 'blog-details',
+// ]);
 
 // Category Page Route
 Route::get('/category/{id}',[
@@ -45,6 +48,7 @@ Route::post('/contact-submit',[
     'as' => 'contact-submit',
 ]);
 
+//Comment Page Route
 Route::post('/comment-submit',[
     'uses' => '\App\Http\Controllers\CommentController@commentSubmit',
     'as' => 'comment-submit',
@@ -62,16 +66,21 @@ Route::get('/blogs',[
     'as'  => 'blogs'
 ]);
 
+Route::get('/search',[
+    'uses' => '\App\Http\Controllers\SearchController@search',
+    'as'  => 'search'
+]);
+
 
 
 //Dashboard Route
 Route::get('/dashboard', [
     'uses' => '\App\Http\Controllers\Admin\AdminController@index',
     'as'  => 'dashboard',
-    'middleware' => ['auth:sanctum', 'verified'],
+    'middleware' => ['auth:sanctum', 'verified','superAdmin'],
 ]);
 
-Route::group(['middleware' =>['auth:sanctum', 'verified']], function (){
+Route::group(['middleware' =>['auth:sanctum', 'verified','superAdmin']], function (){
     //    category routes
         Route::get('/add-category', [
             'uses' => '\App\Http\Controllers\Admin\CategoryController@addCategory',
@@ -98,6 +107,8 @@ Route::group(['middleware' =>['auth:sanctum', 'verified']], function (){
             'as'  => 'delete-category',
         ]);
 
+
+
         //    blog routes
         Route::get('/add-blog', [
             'uses' => '\App\Http\Controllers\Admin\BlogController@addBlog',
@@ -115,6 +126,18 @@ Route::group(['middleware' =>['auth:sanctum', 'verified']], function (){
             'uses' => '\App\Http\Controllers\Admin\BlogController@editBlog',
             'as'  => 'edit-blog',
         ]);
+
+        Route::get('/update-status/{id}', [
+            'uses'=>'\App\Http\Controllers\Admin\BlogController@updateBlogStatus',
+            'as'=>'update-status'
+            ]);
+
+
+        Route::get('/blog-detail/{id}', [
+            'uses'=>'\App\Http\Controllers\Admin\BlogController@detail',
+            'as'=>'blog-detail'
+        ]);
+
         Route::post('/update-blog', [
             'uses' => '\App\Http\Controllers\Admin\BlogController@updateBlog',
             'as'  => 'update-blog',

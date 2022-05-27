@@ -30,7 +30,7 @@ Manage Comment
                         @foreach ($comments as $comment)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><a href="{{ route('blog', ['id' => $comment->blog->id]) }}">{{ $comment->blog->title}}</a></td>
+                            <td><a href="{{ route('blog', ['id' => $comment->blog->id ?? '']) }}">{{ $comment->blog->title ?? ''}}</a></td>
                             <td>{{ $comment->name}}</td>
                             <td>{{ $comment->comment }}</td>
                             <td>

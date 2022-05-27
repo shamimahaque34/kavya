@@ -9,9 +9,10 @@ class Blog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category_id','title','description','author_image','author','image'];
+    protected $fillable = ['category_id','title','description','author_image','author','author_description','image'];
 
     protected static $blog;
+    private static $message;
 
     // Propeerty For Author Image
     protected static $authorImage;
@@ -62,14 +63,7 @@ class Blog extends Model
 
     protected static function blogCreated($request)
     {
-        self::$blog                 = new Blog();
-        self::$blog->category_id    = $request->category_id;
-        self::$blog->title          = $request->title;
-        self::$blog->description    = $request->description;
-        self::$blog->author_image   = self::saveAuthorImage($request);
-        self::$blog->author   = $request->author;
-        self::$blog->image     = self::saveBlogImage($request);
-        self::$blog->save();
+        self::saveBlogBasicInfo(new Blog(), $request, self::saveAuthorImage($request),self::saveBlogImage($request));
     }
 
     protected static function blogUpdated($request)
@@ -97,13 +91,38 @@ class Blog extends Model
         else{
             self::$blogImageUrl = self::$blog->image;
         }
-        self::$blog->category_id    = $request->category_id;
-        self::$blog->title          = $request->title;
-        self::$blog->description    = $request->description;
-        self::$blog->author_image   = self::$authorImageUrl;
-        self::$blog->author    = $request->author;
-        self::$blog->image     = self::$blogImageUrl;
+        self::saveBlogBasicInfo(self::$blog, $request, self:: $authorImageUrl,self::$blogImageUrl);
+    }
+
+    public static function saveBlogBasicInfo($blog, $request, $authorImageUrl,$blogImageUrl)
+    {
+       
+        $blog->category_id        = $request->category_id;
+        $blog->title              = $request->title;
+        $blog->description        = $request->description;
+        $blog->author_image       = $authorImageUrl;
+        $blog->author             = $request->author;
+        $blog->author_description = $request->author_description;
+        $blog->image              = $blogImageUrl;
+        $blog->save();
+    }
+
+
+    public static function updateBlogStatus($id)
+    {
+        self::$blog = Blog::find($id);
+        if (self::$blog->status == 0)
+        {
+            self::$blog->status = 1;
+            self::$message = 'Blog approve successfully.';
+        }
+        else
+        {
+            self::$blog->status = 0;
+            self::$message = 'Blog disapprove successfully.';
+        }
         self::$blog->save();
+        return self::$message;
     }
 
     public function category()

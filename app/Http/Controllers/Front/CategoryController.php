@@ -13,7 +13,7 @@ class CategoryController extends Controller
     protected $blogs;
     public function index($id)
     {
-        $this->blogs = Blog::where('category_id', $id)->get();
+        $this->blogs = Blog::where('category_id', $id)->Paginate(3);
         return view('front.category', ['blogs' => $this->blogs, 'category' => Category::find($id)]);
     }
 }

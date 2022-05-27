@@ -43,13 +43,15 @@ Blog Details
     </div>
 
     <div class="comment-section">
+
                 <div class="all-response">
-                  <a class="btn view-all-btn" data-toggle="collapse" href="#collapseExample" role="button"
+                  View all comments
+                  {{-- <a class="btn view-all-btn" data-toggle="collapse" href="#collapseExample" role="button"
                     aria-expanded="false" aria-controls="collapseExample">
-                    View all comments
-                  </a>
+                    
+                  </a> --}}
                 </div>
-                <div class="collapse" id="collapseExample">
+                {{-- <div class="collapse" id="collapseExample"> --}}
                   <div class="card comment-card">
                     <div class="card-body">
                       @foreach($blog->comments as $comment)
@@ -72,7 +74,7 @@ Blog Details
 
 
                  </div> 
-                </div>
+                {{-- </div> --}}
                 
                 
                 <form class="comment-form" action="{{ route('comment-submit') }}" method="POST" >

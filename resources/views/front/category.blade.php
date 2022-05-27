@@ -33,7 +33,7 @@ Category
                 @foreach ($blogs as $blog)
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <a href="{{ route('blog-details', ['id' => $blog->id]) }}">
+                        <a href="{{ route('blogs', ['id' => $blog->id]) }}">
                             <img src="{{ asset($blog->image) }}" class="card-img-top" alt="Blog Tumbnail">
                         </a>
                         <div class="card-body px-0">
@@ -43,7 +43,7 @@ Category
                                 </li>
                             </ul>
                             <h5 class="card-title title-font">
-                                <a href="{{ route('blog-details', ['id' => $blog->id]) }}">
+                                <a href="{{ route('blog', ['id' => $blog->id]) }}">
                                     {{ Str::limit($blog->title, 26, '...') }}
                                 </a>
                             </h5>
@@ -66,10 +66,12 @@ Category
                 </div>
                 @endforeach
             </div>
+
+            {{$blogs->links('front.includes.pagination')}} 
         </div>
     </div>
 </section>
-<section class="pagination-section">
+{{-- <section class="pagination-section">
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item disabled">
@@ -87,5 +89,5 @@ Category
             </li>
         </ul>
     </nav>
-</section>
+</section> --}}
 @endsection

@@ -26,9 +26,9 @@ Edit Blog
                             </div>
                             <div class="col-md-10">
                                 <select class="form-control" name="category_id" id="category_id" required>
-                                    <option value="" selected>Select Category</option>
+                                    <option value="" selected disabled>Select Category</option>
                                     @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{$category->id}}" {{$blog->category_id == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -75,6 +75,17 @@ Edit Blog
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="author_description" class="col-form-label">Author Description</label>
+                            </div>
+                            <div class="col-md-10">
+                                <textarea name="author_description" id="author_description" class="form-control">{{ $blog->author_description }}</textarea>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
@@ -86,6 +97,8 @@ Edit Blog
                             </div>
                         </div>
                     </div>
+
+                   
                     <div class="form-group">
                         <div class="row justify-content-end">
                             <div class="col-md-10">

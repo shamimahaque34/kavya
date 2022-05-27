@@ -21,7 +21,8 @@ class BlogController extends Controller
 
     public function index()
     {
-        $this->blogs =  Blog::all();
+        $this->blogs = Blog::orderBy('id','DESC')->Paginate(6);
+        
         return view('front.blog.blogs', ['blogs' => $this->blogs]);
     }
 }

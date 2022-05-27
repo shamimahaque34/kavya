@@ -1,6 +1,6 @@
 @extends('front.master')
 @section('title')
-লগইন
+Login
 @endsection
 
 @section('body')
@@ -8,7 +8,7 @@
     <div class="container">
         <div class="sign widget ">
             <div class="section-title">
-                <h5>লগইন</h5>
+                <h5>Login</h5>
             </div>
             <form  action="{{ route('login') }}" class="sign-form widget-form " method="POST">
                 @csrf

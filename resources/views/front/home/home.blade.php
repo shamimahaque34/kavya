@@ -1,14 +1,14 @@
 @extends('front.master')
 
 @section('title')
-  Kavya|Home
+  Shamima|Home
 @endsection
 
 @section('body')
     <section class="recommended-posts">
         <div class="container">
             <div class="section-title">
-            <h3>সাম্প্রতিক ব্লগসমূহ</h3>
+            <h3>Latest Blogs</h3>
             </div>
             <div class="more-content-grid ">
                 <div class="row">
@@ -36,7 +36,7 @@
                             </div>
                                 <div class="author-date">
                                     <a class="author" href="#">
-                                        <img src="{{ asset(asset($blog->author_image)) }}" alt="" class="rounded-circle" />
+                                        <img src="{{ asset($blog->author_image) }}" alt="" class="rounded-circle" />
                                         <span class="writer-name-small">{{ $blog->author }}</span>
                                     </a>
                                     <a class="date" href="#">
@@ -50,6 +50,7 @@
                     @endforeach
                     
                 </div>
+                {{$blogs->links('front.includes.pagination')}} 
             </div>
         </div>
     </section>

@@ -4,11 +4,13 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <a href="#">
-                    <h5 class="brand-name"> Kavya</h5>
+                    <h5 class="brand-name">Shamima</h5>
                 </a>
             </div>
             <div class="footer-copyright">
-                <p>&copy;2019 Kavya. All rights reserved. Theme designed by <a href="#">CodeVibrant</a> </p>
+                <p><b>Designed and Developed by</b>
+                    <b><a href="https://www.facebook.com/shamima.haque.92560" target="_blank"><i
+                                class="fa-brands fa-facebook"></i> Shamima Haque Ete</a></b></p>
             </div>
             <div class="social-links">
                 <ul>

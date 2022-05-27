@@ -46,10 +46,10 @@ Add Blog
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
-                                <label for="description" class="col-form-label">Blog Description</label>
+                                <label for="description" class="col-form-label ">Blog Description</label>
                             </div>
                             <div class="col-md-10">
-                                <textarea name="description" id="description" class="form-control"></textarea>
+                                <textarea name="description" id="description" class="form-control summernote"></textarea>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ Add Blog
                                 <label for="author_image" class="col-form-label">Author Image</label>
                             </div>
                             <div class="col-md-10">
-                                <input type="file" class="form-control" name="author_image" id="author_image">
+                                <input type="file" class="form-control" name="author_image" id="author_image" accept="image/*">
                             </div>
                         </div>
                     </div>
@@ -73,13 +73,24 @@ Add Blog
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="author_description" class="col-form-label ">Author Description</label>
+                            </div>
+                            <div class="col-md-10">
+                                <textarea name="author_description" id="author_description" class="form-control summernote"></textarea>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
                                 <label for="blog_image" class="col-form-label">Blog Image</label>
                             </div>
                             <div class="col-md-10">
-                                <input type="file" class="form-control" name="image" id="blog_image">
+                                <input type="file" class="form-control" name="image" id="blog_image" accept="image/*">
                             </div>
                         </div>
                     </div>

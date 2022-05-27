@@ -29,7 +29,7 @@ class MyTestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from ItSolutionKavya.com')
+        return $this->subject('Mail from Shamima.com')
                     ->view('mails.mail');
     }
 }

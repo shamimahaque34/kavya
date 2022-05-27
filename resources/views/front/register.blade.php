@@ -1,6 +1,6 @@
 @extends('front.master')
 @section('title')
-সাইন আপ
+Register
 @endsection
 @section('nav-item')
 <ul class="navbar-nav mx-auto">

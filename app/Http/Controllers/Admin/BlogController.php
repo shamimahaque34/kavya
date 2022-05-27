@@ -35,10 +35,21 @@ class BlogController extends Controller
         $this->blog = Blog::find($id);
         return view('admin.blog.edit-blog', ['blog' => $this->blog, 'categories' => $this->categories]);
     }
+
+    public function detail($id)
+    {
+        $this->blog = Blog::find($id);
+        return view('admin.detail.detail', ['blog' => $this->blog]);
+    }
     public function updateBlog(Request $request)
     {
-        Blog::blogupdated($request);
+        Blog::blogUpdated($request);
         return redirect('manage-blog')->with('message', 'Blog Updated Successfully!');
+    }
+
+    public function updateBlogStatus($id)
+    {
+        return redirect()->back()->with('message', Blog::updateBlogStatus($id));
     }
     public function deleteBlog($id)
     {

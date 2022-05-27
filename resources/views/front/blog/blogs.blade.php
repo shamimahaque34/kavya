@@ -1,14 +1,14 @@
 @extends('front.master')
 
 @section('title')
-  Kavya|Blog
+  Shamima|Blog
 @endsection
 
 @section('body')
     <section class="recommended-posts">
         <div class="container">
             <div class="section-title">
-            <h3>ব্লগসমূহ</h3>
+            <h3>Blogs</h3>
             </div>
             <div class="more-content-grid ">
                 <div class="row">
@@ -50,8 +50,12 @@
                     @endforeach
                     
                 </div>
+                {{$blogs->links('front.includes.pagination')}} 
+                {{-- {{ $blogs->links() }} --}}
             </div>
+            
         </div>
+        
     </section>
     <!-- Recommended posts end -->
 

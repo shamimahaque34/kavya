@@ -18,9 +18,11 @@ class CreateBlogsTable extends Migration
             $table->integer('category_id');
             $table->string('title');
             $table->text('description');
-            $table->text('author_image')->nullable();
             $table->string('author');
+            $table->text('author_image')->nullable();
+            $table->text('author_description')->nullable();
             $table->text('image')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

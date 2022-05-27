@@ -31,3 +31,6 @@
 <script src="{{ asset('/') }}admin-assets/js/toastr.min.js"></script>
 
 <script src="{{ asset('/') }}admin-assets/js/app.js"></script>
+
+
+    <script src="{{ asset('/') }}summernote-0.8.18-dist/summernote-bs4.min.js"></script>
